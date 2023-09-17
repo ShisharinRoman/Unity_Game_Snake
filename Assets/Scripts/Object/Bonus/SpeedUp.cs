@@ -12,8 +12,6 @@ public class SpeedUp : Bonus
 
     public override void giveEffect( Head player )
     {
-        transform.position = new Vector2( 100,100 );
-
         if ( actionPlayer.MultSpeedForce >= 1 )
             actionPlayer.MultSpeedForce++;
         else

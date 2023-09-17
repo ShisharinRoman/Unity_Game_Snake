@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Bonus : Item
 {
-
     protected const int DEFAULT_TIME_ACTIVITY = 5;
 
-    protected Head      actionPlayer;
-    protected float     timeActive;
-    private void Awake()
+
+    private new BoxCollider2D   collider;
+    private SpriteRenderer      spriteRenderer;
+    protected Head              actionPlayer;
+    protected float             timeActive;
+
+    private void Start()
     {
-        timeActive = 0;
+        collider =          GetComponent<BoxCollider2D>();
+        spriteRenderer =    GetComponent<SpriteRenderer>();
     }
 
     protected IEnumerator timer()
@@ -26,7 +30,9 @@ public class Bonus : Item
 
     public override void reactionToPlayer( Head player )
     {
-        actionPlayer = player;
+        actionPlayer =              player;
+        collider.enabled =          false;
+        spriteRenderer.enabled =    false;
 
         giveEffect( player );
 
@@ -35,11 +41,9 @@ public class Bonus : Item
 
     public virtual void giveEffect( Head player )
     {
-
     }
 
     public virtual void loseEffect()
     {
-
     }
 }
